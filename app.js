@@ -30,12 +30,14 @@ app.use(methodOverride("_method"));
 app.engine("ejs",ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
 
+app.use ("/listings",listings);
+ app.use("/listings/:id/reviews",reviews);
+ 
 app.get("/",(req,res)=>{
     res.send("Hi, i am root");
 });
  
-app.use ("/listings",listings);
- app.use("/listings/:id/reviews",reviews);
+
 
 app.use((req, res, next) => {
     next(new ExpressError(404, "Page Not Found"));
