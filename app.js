@@ -22,31 +22,3 @@ main()
 async function main(){
     await mongoose.connect(MONGO_URL);
 }
-
-app.set("view engine","ejs");
-app.set("views",path.join(__dirname,"views"));
-app.use(express.urlencoded({extended:true}));
-app.use(methodOverride("_method"));
-app.engine("ejs",ejsMate);
-app.use(express.static(path.join(__dirname,"/public")));
-
-app.use ("/listings",listings);
- app.use("/listings/:id/reviews",reviews);
- 
-app.get("/",(req,res)=>{
-    res.send("Hi, i am root");
-});
- 
-
-
-app.use((req, res, next) => {
-    next(new ExpressError(404, "Page Not Found"));
-});
-
- app.use((err,req,res,next) =>{
-    let {statusCode= 500, message="Somthing went wrong!"} = err;
-    res.status(statusCode).render("error.ejs",{ message });
-   });
-app. listen(8080,() =>{
- console.log ("server is listening to port 8080");
-} );
