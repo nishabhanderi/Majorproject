@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const path = require ("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
-const ExpressError = require("./utils/ExpressExpress.js");
+const ExpressError = require("./utils/ExpressErrorjs");
 
 const listings = require("./routes/listing.js");
 const reviews = require("./routes/review.js");
@@ -22,8 +22,7 @@ main()
 async function main(){
     await mongoose.connect(MONGO_URL);
 }
-
-app.set("view engine","ejs");
+app.set("view engine","ejs"); 
 app.set("views",path.join(__dirname,"views"));
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
@@ -49,4 +48,4 @@ app.use((req, res, next) => {
    });
 app. listen(8080,() =>{
  console.log ("server is listening to port 8080");
-} );
+} );  
