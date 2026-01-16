@@ -17,7 +17,9 @@
         </div>
         <div class="mb-3">
         <label for="desctiption" class="form-label">Description</label>
-        <textarea name="listing[description]" class="form-control" required <%=listing.description%>></textarea>
+        <textarea name="listing[description]"
+         class="form-control" required ><%=listing.description%>
+        </textarea>
        <div class="invalid-feedback">
         description should be valid
       </div> 
@@ -49,7 +51,7 @@
          </div>
          <div class="mb-3">
         <label for="location" class="form-label">Location</label>     
-        <input name="listing[location]" class="form-control"  required <%=listing.location%> type="text" >
+        <input name="listing[location]" class="form-control"  required value="<%=listing.location%>" type="text" >
       <div class="invalid-feedback">
         Location should be valid.
       </div>
