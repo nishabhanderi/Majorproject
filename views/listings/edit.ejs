@@ -1,12 +1,14 @@
 <% layout ("/layouts/boilerplate") %>
-   <div class="row mt-3">
+  <div class="row mt-3">
     <div class="col-8 offset-2">
         <br><br>
          <h3>Edit your Listing</h3>
          <br>
     <form method="POST" action="/listings/<%= listing._id%>?_method=PUT "
         novalidate
-        class="needs-validation" >
+        class="needs-validation"
+        enctype="multipart/form-data"
+        >
         <div class="mb-3">
         <label for="title" form="form-label">Enter Title</label>
         <input name="listing[title]" value="<%= listing.title %>" type="text"
@@ -21,20 +23,21 @@
          class="form-control" required ><%=listing.description%>
         </textarea>
        <div class="invalid-feedback">
-        description should be valid
-      </div> 
+        description should be valid</div> 
     </div>
+     original Listing Image
+       <div class="mb-3">
+        
+        <img src="<%= originalImageUrl%>"/>
+         </div>
 
         <div class="mb-3">
-        <label for="image" class="form-label">image</label>
-        <input name="listing[image]" value="<%=listing.image%>" type="text" class="form-control" required>
-      <div class="invalid-feedback">
-         image should be valid.
-      </div>
-            
-    </div>
+        <label for="image" class="form-label"> Upload New Image</label>
+        <input name="listing[image]" 
+        type="file"
+         class="form-control" />
+         </div>
         <div class="row">
-            
         <div class="mb-3 col-4">
         <label for="price" class="form-label">Price</label>
         <input name="listing[price]" value="<%=listing.price%>" class="form-control" required>
@@ -59,7 +62,7 @@
     </div>
         
 
-     <button class="add-btn mt-3">Edit</button>
+  <button class="add-btn mt-3">Edit</button>
     </form>
     </div>
    </div>
